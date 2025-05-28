@@ -1,6 +1,6 @@
 # Code Helper AI
 
-A web application that uses Google's Gemini 1.5 Flash model to provide coding assistance, explanations, and solutions to programming problems.
+A local application that uses Google's Gemini 1.5 Flash model to provide coding assistance, explanations, and solutions to programming problems.
 
 ## Features
 
@@ -8,7 +8,7 @@ A web application that uses Google's Gemini 1.5 Flash model to provide coding as
 - Provide detailed context about your code and problem
 - Receive tailored responses based on your skill level
 - Code syntax highlighting for better readability
-- Responsive design that works on desktop and mobile
+- Runs completely locally on your computer
 
 ## Prerequisites
 
@@ -17,12 +17,7 @@ A web application that uses Google's Gemini 1.5 Flash model to provide coding as
 
 ## Installation
 
-1. Clone this repository:
-
-   ```
-   git clone <repository-url>
-   cd code-helper-AI
-   ```
+1. Make sure you have Python installed on your computer
 
 2. Install the required dependencies:
 
@@ -30,7 +25,7 @@ A web application that uses Google's Gemini 1.5 Flash model to provide coding as
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file in the project root and add your Gemini API key:
+3. Make sure your `.env` file in the project root has your Gemini API key:
 
    ```
    GEMINI_API_KEY=your_api_key_here
@@ -38,58 +33,54 @@ A web application that uses Google's Gemini 1.5 Flash model to provide coding as
 
    You can obtain an API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
 
-## Usage
+## Running the Application
 
-### Local Development
+### Option 1: Using the Batch File (Easiest)
 
-1. Start the Flask development server:
+1. Simply double-click the `run_app.bat` file in the project folder
+2. The application will start automatically
+3. Your default web browser will open to http://127.0.0.1:5000
+4. When you're done, close the command prompt window
+
+### Option 2: Using Command Line
+
+1. Open a command prompt
+2. Navigate to the project directory
+3. Run the following command:
 
    ```
-   python run.py
+   python app.py
    ```
 
-2. Open your web browser and navigate to:
+4. Open your web browser and go to http://127.0.0.1:5000
 
-   ```
-   http://127.0.0.1:5000
-   ```
+## Using the Application
 
-### Deployment to Render (Free Hosting)
+1. Fill out the form with your coding question or issue:
 
-1. Fork or clone this repository to your GitHub account
-2. Sign up for a free account at [Render](https://render.com/)
-3. Click "New +" and select "Web Service"
-4. Connect your GitHub account and select this repository
-5. Configure the service:
-   - Name: code-helper-ai (or any name you prefer)
-   - Environment: Python
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn app:app`
-6. Add the environment variable:
-   - Key: `GEMINI_API_KEY`
-   - Value: Your Google Gemini API key
-7. Click "Create Web Service"
-
-Your application will be deployed and accessible via a URL like: `https://code-helper-ai.onrender.com`
-
-3. Fill out the form with your coding question or issue:
    - Enter your query or problem statement
    - Select the programming language
    - Paste your code snippet (if applicable)
    - Provide additional context as needed
-   - Submit the form to get AI-generated assistance
+   - Click "Get Help" to get AI-generated assistance
+
+2. The AI will analyze your query and provide:
+
+   - Explanations of your code issues
+   - Suggested solutions
+   - Code examples
+   - Best practices
+
+3. When you're done, simply close the browser tab and the command prompt window
 
 ## Project Structure
 
 ```
 code-helper-AI/
 ├── app.py                 # Flask application and API endpoints
-├── run.py                 # Script to run the application locally
-├── run.bat                # Batch file to run the application on Windows
+├── run_app.bat            # Batch file to run the application on Windows
 ├── requirements.txt       # Python dependencies
 ├── .env                   # Environment variables (API keys)
-├── gunicorn.conf.py       # Gunicorn configuration for production
-├── render.yaml            # Render deployment configuration
 ├── static/
 │   ├── css/
 │   │   └── style.css      # Application styling
@@ -99,15 +90,11 @@ code-helper-AI/
     └── index.html         # Main HTML template
 ```
 
-## Customization
+## Notes
 
-- Modify `static/css/style.css` to change the application's appearance
-- Adjust the prompt template in `app.py` to customize how queries are sent to Gemini
-- Edit `templates/index.html` to add or remove form fields
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+- This application runs completely locally on your computer
+- No data is sent to external servers except to Google's Gemini API for processing your queries
+- Your Gemini API key is stored in the `.env` file and is only used to authenticate with Google's API
 
 ## Acknowledgements
 

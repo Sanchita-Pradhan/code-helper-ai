@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Helper AI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Code Helper AI</h1>
+        <p>Powered by Gemini 1.5 Flash</p>
+      </header>
+
+      <div class="main-content">
+        <div class="input-section">
+          <form id="codeHelperForm">
+            <div class="form-group">
+              <label for="userQuery">Query/Problem Statement*</label>
+              <input
+                type="text"
+                id="userQuery"
+                name="userQuery"
+                placeholder="Describe your coding issue or question"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="programmingLanguage">Programming Language*</label>
+              <input
+                type="text"
+                id="programmingLanguage"
+                name="programmingLanguage"
+                placeholder="e.g., Python, JavaScript, Java"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="codeSnippet">Code Snippet</label>
+              <textarea
+                id="codeSnippet"
+                name="codeSnippet"
+                placeholder="Paste your code here"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="desiredOutput">Desired Output/Goal</label>
+              <input
+                type="text"
+                id="desiredOutput"
+                name="desiredOutput"
+                placeholder="What do you want your code to accomplish?"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="codeContext">Code Context/File Type</label>
+              <input
+                type="text"
+                id="codeContext"
+                name="codeContext"
+                placeholder="e.g., frontend, backend API, script"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="framework">Framework/Library</label>
+              <input
+                type="text"
+                id="framework"
+                name="framework"
+                placeholder="e.g., React, NumPy, Flask"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="errorMessage">Error Message</label>
+              <textarea
+                id="errorMessage"
+                name="errorMessage"
+                placeholder="Paste any error messages here"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="difficultyLevel">Difficulty Level</label>
+              <select id="difficultyLevel" name="difficultyLevel">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate" selected>Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+
+            <button type="submit" id="submitBtn">Get Help</button>
+          </form>
+        </div>
+
+        <div class="output-section" id="outputSection">
+          <h2>AI Response</h2>
+          <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p>Generating response...</p>
+          </div>
+          <div id="responseContainer" class="response-container"></div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2024 Code Helper AI. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      // Initialize highlight.js
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document.querySelectorAll("pre code").forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+  </body>
+</html>

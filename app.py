@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
@@ -22,14 +22,6 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 @app.route('/')
 def index():
     return render_template('index.html')
-
-@app.route('/service-worker.js')
-def service_worker():
-    return send_from_directory('static', 'service-worker.js')
-
-@app.route('/manifest.json')
-def manifest():
-    return send_from_directory('static', 'manifest.json')
 
 @app.route('/api/generate', methods=['POST'])
 def generate_response():

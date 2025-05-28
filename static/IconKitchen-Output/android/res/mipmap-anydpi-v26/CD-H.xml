@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-  <background android:drawable="@mipmap/CD-H_background"/>
-  <foreground android:drawable="@mipmap/CD-H_foreground"/>
-  <monochrome android:drawable="@mipmap/CD-H_monochrome"/>
-</adaptive-icon>
